@@ -28,18 +28,16 @@ public class UserController {
 	@RequestMapping("/getUserFromDb")
     public User getUser() {
         User user=userService.getUser();
-        redisUtil.set("user", user);
+        redisUtil.setObj("user",user);
         return user;
     }
 	
 	
 	@RequestMapping("/getUserFromRedis")
     public User getUserFromRedis() {
-		boolean b=redisUtil.hasKey("user");
-		logger.debug("b:"+b);
-        User user1=(User)redisUtil.get("user");
-        logger.debug("user1:"+user1);
-        return user1;
+		User user=(User)redisUtil.getObj("user");
+		System.out.println("name:"+user.getName()+" age:"+user.getAge());
+        return user;
     }
 
 }

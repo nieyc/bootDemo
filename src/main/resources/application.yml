@@ -1,7 +1,10 @@
 server:
   port: 8080
 
-spring:  
+spring: 
+  application: 
+    name: bootDemo
+      
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&amp;characterEncoding=UTF-8
     username: root
@@ -18,16 +21,15 @@ spring:
     validationQueryTimeout: 100
     
   redis:
-    host: 127.0.0.1
-    port: 6379
-    database: 0
-    password:  
-    pool.max-active: 8
-    pool.max-wait: -1
-    pool.max-idle: 8
-    pool.min-idle: 0
-    timeout: 5000
-   
+    #password: 
+    clusterNodes: 172.16.2.55:6000,172.16.2.55:7000,172.16.2.55:8000,172.16.2.56:6000,172.16.2.56:7000,172.16.2.56:8000
+    #expireSeconds: 120
+    commandTimeout: 10000  #redis操作的超时时间
+    maxActive: 5000 #最大连接数
+    maxIdle: 30 #最大空闲连接数
+    minIdle: 5 #最小空闲连接数
+    maxWait: 3000  #获取连接最大等待时间 ms  #default -1
+
    
 mybatis:
   configuration.jdbcTypeForNull: 'NULL'
