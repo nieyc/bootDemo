@@ -1,12 +1,13 @@
-package com.github.nyc.bootDemo.controller;
+package com.github.nyc.bootDemo.user.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.github.nyc.bootDemo.domain.User;
-import com.github.nyc.bootDemo.service.UserService;
+import com.github.nyc.bootDemo.user.domain.User;
+import com.github.nyc.bootDemo.user.service.UserService;
 import com.github.nyc.bootDemo.util.RedisUtil;
 
 @RestController
@@ -15,24 +16,25 @@ public class UserController {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	@Value("${com.github.nyc.url}")
+	private String url;
+	
 	@Autowired
 	UserService userService;
     
     @Autowired
     RedisUtil redisUtil;
 	
-	@RequestMapping("/getUser")
+	@RequestMapping("/getUserFromDb")
     public User getUser() {
-		logger.debug("********************************"+redisUtil);
         User user=userService.getUser();
-        user=(User)redisUtil.get("user");
-        System.out.println(user.getUserName()+user.getPassWord());
+        redisUtil.set("user", user);
         return user;
     }
 	
 	
-	@RequestMapping("/getUser1")
-    public User getUser1() {
+	@RequestMapping("/getUserFromRedis")
+    public User getUserFromRedis() {
 		boolean b=redisUtil.hasKey("user");
 		logger.debug("b:"+b);
         User user1=(User)redisUtil.get("user");

@@ -21,8 +21,7 @@ import com.github.nyc.bootDemo.util.FastJsonRedisSerializer;
 @EnableCaching
 @Configuration
 @ConditionalOnClass(RedisOperations.class)
-@EnableConfigurationProperties(RedisProperties.class)
-//@PropertySource("classpath:config/redis.properties")
+//@EnableConfigurationProperties(RedisProperties.class)//此注解加载默认的redis，不需要配置，如果自定义，需要屏蔽
 public class RedisConfig extends CachingConfigurerSupport {
  
     @Bean(name = "redisTemplate")
