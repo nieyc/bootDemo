@@ -1,4 +1,5 @@
 spring-boot2.0 mvc demo
+-redis集群查看分支：redisCluster-demo
 
 打包:
 mvn clean package -Dmaven.test.skip=true
