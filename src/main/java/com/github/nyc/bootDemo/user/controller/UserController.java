@@ -24,7 +24,23 @@ public class UserController {
     
     @Autowired
     RedisUtil redisUtil;
+    
+    
+    /**
+     * 测试用例准备
+     * @see com.github.nyc.bootDemo.UserTest
+     * @return
+     */
+    @RequestMapping("/hello")
+    public String hello() {
+        return "Greetings from Spring Boot!";
+    }
+    
 	
+    /**
+     * 从数据库取值，并且set到redis
+     * @return
+     */
 	@RequestMapping("/getUserFromDb")
     public User getUser() {
         User user=userService.getUser();

@@ -17,20 +17,6 @@ public class BootDemoApplicationTests {
 	public void contextLoads() {
 	}
 	
-	public static void main(String[] args) {
-		List<String> list = new ArrayList<String>();
-		list.add("abc");
-		list.add("bbc");
-		list.add("cbc");
-		Iterator<String> it = list.iterator();
-		while(it.hasNext()){
-		String str = it.next();
-		System.out.println(str);
-		if(str.equals("abc")){
-		  it.remove();
-		}
-		}
-		System.out.println(list.size());
-	}
+	
 
 }

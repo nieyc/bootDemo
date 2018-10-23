@@ -1,6 +1,14 @@
 server:
   port: 8080
 
+#系统健康检查，具体见postman中spring-boot实例
+management: 
+  server.port: 9001
+  endpoints.web.base-path: /monitor
+  endpoints.web.exposure.include: "*"
+  endpoint.health.show-details: always
+  endpoint.shutdown.enabled: true #远程关闭，生产环境不应该配置
+
 spring:  
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&amp;characterEncoding=UTF-8
@@ -38,9 +46,11 @@ com.github.nyc.url: www.baidu.com
 com.github.nyc.name: nieyc
 spring.application.name: bootDemo
 
+
 #日志
 logging:
   file: ./logs/spring-boot
   level:
    com.github.nyc.bootDemo: DEBUG
    org.springframework.web: INFO
+   org.springframework.boot: INFO
