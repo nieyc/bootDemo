@@ -7,7 +7,8 @@ mvn clean package -Dmaven.test.skip=true
 java -jar bootDemo-0.0.1-SNAPSHOT.jar
 
 进程压倒后台运行：
-nohup java -jar bootDemo-0.0.1-SNAPSHOT.jar &
+#nohup java -jar bootDemo-0.0.1-SNAPSHOT.jar &
+nohup java -jar bootDemo-1.0-SNAPSHOT.jar >log.file 2>&1 &
 
 服务端运行：
 上传jar包到服务器，假设部署路径为 /opt/springBoot-test.jar ，使用命令做一个软连接到 /etc/init.d 目录，myapp是服务别名，命令：
