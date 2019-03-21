@@ -1,12 +1,12 @@
-package com.github.nyc.bootDemo.user.service;
+package com.github.nyc.bootDemo.demo.user.service;
 
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import com.github.nyc.bootDemo.user.dao.UserDao;
-import com.github.nyc.bootDemo.user.domain.User;
+import com.github.nyc.bootDemo.demo.user.dao.UserDao;
+import com.github.nyc.bootDemo.demo.user.domain.User;
 
 @Service
 public class UserService {

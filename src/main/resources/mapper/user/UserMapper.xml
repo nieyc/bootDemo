@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC   
 	 "-//mybatis.org//DTD Mapper 3.0//EN"  
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
-<mapper namespace="com.github.nyc.bootDemo.user.dao.UserDao"> 
+<mapper namespace="com.github.nyc.bootDemo.demo.user.dao.UserDao">
 
-	<resultMap type="com.github.nyc.bootDemo.user.domain.User" id="userMap">
+	<resultMap type="com.github.nyc.bootDemo.demo.user.domain.User" id="userMap">
 		<id property="id" column="id" />
 		<result property="name" column="name" />
 		<result property="age" column="age" />

@@ -1,4 +1,4 @@
-package com.github.nyc.bootDemo.user.domain;
+package com.github.nyc.bootDemo.demo.user.domain;
 
 public class User {
 	

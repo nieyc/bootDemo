@@ -6,34 +6,54 @@ spring:
     name: bootDemo
       
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&amp;characterEncoding=UTF-8
-    username: root
-    password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
-    maxActive: 100
-    maxIdle: 50
-    minIdle: 10
-    initialSize: 10
-    maxWait: 100
-    connectionTimeout: 500
-    testWhileIdle: true
-    validationQuery: SELECT 1 FROM DUAL
-    validationQueryTimeout: 100
-    
+    master: #master 数据源
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&amp;characterEncoding=UTF-8
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      maxActive: 100
+      maxIdle: 50
+      minIdle: 10
+      initialSize: 10
+      maxWait: 100
+      connectionTimeout: 500
+      testWhileIdle: true
+      validationQuery: SELECT 1 FROM DUAL
+      validationQueryTimeout: 100
+
+    cluster: #从数据源
+       jdbc-url: jdbc:mysql://172.16.2.140:3306/school?useSSL=false&useUnicode=true&amp;characterEncoding=UTF-8
+       username: finance
+       password: finance
+       driver-class-name: com.mysql.jdbc.Driver
+       maxActive: 100
+       maxIdle: 50
+       minIdle: 10
+       initialSize: 10
+       maxWait: 100
+       connectionTimeout: 500
+       testWhileIdle: true
+       validationQuery: SELECT 1 FROM DUAL
+       validationQueryTimeout: 100
+
+
+
   redis:
-    #password: 
-    clusterNodes: 172.16.2.55:6000,172.16.2.55:7000,172.16.2.55:8000,172.16.2.56:6000,172.16.2.56:7000,172.16.2.56:8000
-    #expireSeconds: 120
-    commandTimeout: 10000  #redis操作的超时时间
-    maxActive: 5000 #最大连接数
-    maxIdle: 30 #最大空闲连接数
-    minIdle: 5 #最小空闲连接数
-    maxWait: 3000  #获取连接最大等待时间 ms  #default -1
+    cluster:
+      nodes: 172.16.2.55:6000,172.16.2.55:7000,172.16.2.55:8000,172.16.2.56:6000,172.16.2.56:7000,172.16.2.56:8000
+      timeout: 10 * 1000 #超时时间
+      database: 0 # Redis数据库索引（默认为0）
+      lettuce:
+        pool:
+          max-active: 500 #可用连接实例的最大数目
+          max-wait: 10 * 1000 #等待可用连接的最大时间
+          max-idle: 100 #控制一个pool最多有多少个状态为idle(空闲的)的jedis实例，默认值也是8。
+          min-idle: 10
 
    
-mybatis:
-  configuration.jdbcTypeForNull: 'NULL'
-  mapperLocations: classpath:mapper/**/*Mapper.xml
+#mybatis:
+  #configuration.jdbcTypeForNull: 'NULL'
+  #mapperLocations: classpath:mapper/**/*Mapper.xml
  
 #定义一些常量
 com.github.nyc.url: www.baidu.com
