@@ -1,25 +1,7 @@
 spring-boot2.0 mvc demo
-redis 集群分支
+读写分离多数据源
 
 打包:
 mvn clean package -Dmaven.test.skip=true
-运行：
-java -jar bootDemo-0.0.1-SNAPSHOT.jar
 
-进程压倒后台运行：
-nohup java -jar bootDemo-0.0.1-SNAPSHOT.jar &
-
-服务端运行：
-上传jar包到服务器，假设部署路径为 /opt/springBoot-test.jar ，使用命令做一个软连接到 /etc/init.d 目录，myapp是服务别名，命令：
- ln -s /opt/springBoot-test.jar /etc/init.d/myapp
- 启动:
- service myapp start
- 停止:
- service myapp stop
- 查看状态:
- service myapp status
- 
- 查看进程
-ps -ef|grep java
-ps -aux | grep spring
-
+1个主库，2个从库，所有读操作都走从库，写操作走主库，有些读操作由于有及时性要求，添加注解@Master，也走主库

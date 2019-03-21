@@ -40,6 +40,11 @@
 	       <groupId>org.springframework.boot</groupId>
 	       <artifactId>spring-boot-starter-web</artifactId>
        </dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
        
 	   <dependency>  
 		    <groupId>org.springframework.boot</groupId>  
@@ -74,6 +79,8 @@
 			<version>1.2.51</version>
 		</dependency>
 
+
+
 	   <!--影响redis序列化,所以生产环境要屏蔽掉  -->
 	   <!--<dependency>
 	        <groupId>org.springframework.boot</groupId>
@@ -86,6 +93,11 @@
 		    <groupId>com.alibaba</groupId>
 		    <artifactId>druid</artifactId>
 		    <version>1.1.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.8</version>
 		</dependency>
 		
 	</dependencies>

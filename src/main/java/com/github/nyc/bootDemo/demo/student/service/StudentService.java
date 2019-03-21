@@ -1,5 +1,6 @@
 package com.github.nyc.bootDemo.demo.student.service;
 
+import com.github.nyc.bootDemo.annotation.Master;
 import com.github.nyc.bootDemo.demo.student.dao.StudentDao;
 import com.github.nyc.bootDemo.demo.student.domain.Student;
 import com.github.nyc.bootDemo.demo.user.dao.UserDao;
@@ -20,7 +21,7 @@ public class StudentService {
     @Resource
     private StudentDao studentDao;
 
-
+    @Master
     public List<Student> getStudentList() {
         return  studentDao.getStudentList();
     }

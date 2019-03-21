@@ -21,7 +21,7 @@ spring:
       validationQuery: SELECT 1 FROM DUAL
       validationQueryTimeout: 100
 
-    cluster: #从数据源
+    slave1: #从数据源1
        jdbc-url: jdbc:mysql://172.16.2.140:3306/school?useSSL=false&useUnicode=true&amp;characterEncoding=UTF-8
        username: finance
        password: finance
@@ -36,7 +36,20 @@ spring:
        validationQuery: SELECT 1 FROM DUAL
        validationQueryTimeout: 100
 
-
+    slave2: #从数据源2
+       jdbc-url: jdbc:mysql://172.16.2.142:3306/thank_for?useSSL=false&useUnicode=true&amp;characterEncoding=UTF-8
+       username: root
+       password: root
+       driver-class-name: com.mysql.jdbc.Driver
+       maxActive: 100
+       maxIdle: 50
+       minIdle: 10
+       initialSize: 10
+       maxWait: 100
+       connectionTimeout: 500
+       testWhileIdle: true
+       validationQuery: SELECT 1 FROM DUAL
+       validationQueryTimeout: 100
 
   redis:
     cluster:

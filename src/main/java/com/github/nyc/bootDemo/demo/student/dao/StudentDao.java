@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 import com.github.nyc.bootDemo.demo.student.domain.Student;
 
-//@Mapper
+@Mapper
 public interface StudentDao {
 
 	public List<Student> getStudentList();

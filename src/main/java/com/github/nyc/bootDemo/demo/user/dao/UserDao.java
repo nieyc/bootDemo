@@ -4,7 +4,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import com.github.nyc.bootDemo.demo.user.domain.User;
 
-//@Mapper
+@Mapper
 public interface  UserDao {
 
 	public User getUserById(Integer id);
